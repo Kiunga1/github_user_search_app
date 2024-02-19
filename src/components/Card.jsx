@@ -9,6 +9,13 @@ import Company from '../assets/images/icon-company.svg'
 
 
 const Card = ({githubUser}) => {
+
+  // Function to format date
+  const formatDate = (dateString) => {
+    const options = { year: 'numeric', month: 'short', day: 'numeric' }
+    return new Date(dateString).toLocaleDateString('en-US', options)
+  }
+
   //Check if githubUser is preesent
   if (!githubUser) {
     return (
@@ -84,7 +91,7 @@ const Card = ({githubUser}) => {
           </h1>
             <h3 className='text-primaryBlue'>@{githubUser?.login}</h3>
           </div>
-          <h4 className='text-gray-100 text-sm dark:text-white'>Joined 25 Jan 2011</h4>
+          <h4 className='text-gray-100 text-sm dark:text-white'>Joined {formatDate(githubUser?.created_at)}</h4>
         </div>
       </div>
       <div className='flex justify-end'>
